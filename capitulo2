@@ -1,0 +1,11 @@
+kernel             : glue between hardware an aplications
+distribucion       : colleccion de software hecha para un sistema basado en linux
+boot loader        : programa que bottea el sistema lilo grub isolinux
+service            : program that run como un proceso por debajo es un jodido demonio
+filesystem         : metodo para guardar y organizar archivos (ext3,4 fat ,xfs ,btrfs,ntfs)
+xwindows           : subsistema grafico presente en casi todos los sistemas linux
+desktop environment: interfaz grafica en la parte de arriba del sistema operativognome kde ,xfce 
+Cli                : interfaz para mandar comandos en la parte de arriba del sistema operativo terminator konsole
+shell              : interprete  de linea de ocmandos que interpreta la linea de comandos y traduce al sistema operativo el comando
+                     ingresado bash tcsh zsh
+                     
