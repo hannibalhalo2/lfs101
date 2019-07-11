@@ -1,0 +1,23 @@
+++ 3 familias de dsitribuciones representativas
+debian       rh                       suse
+ |            |                         |
+ ubuntu      fedora                  open suse
+ mint        |     |
+           centos  oracle linux
+           
++ redhat family
+fedora es una plataforma de testeo para rh
+centos y cientific linux son clones de redhatoracle linux es una copia con algunos cambios
+usa rpm
+rh es usado por empresas para hostear sus propios sistemas
+
++ suse family
+suse linux entreprise server esta arriba de opensuse
+usa como controlador de paquetes zypper el cual esta basado en rpm
+usa yast el synaptic de ellos
+
++debian family
+su paqueteria es full open source 
+esta comprometido con la estabilidad 
+usa dpkg
+ubuntu se utiliza comunmente para dezpliegues en la nube
