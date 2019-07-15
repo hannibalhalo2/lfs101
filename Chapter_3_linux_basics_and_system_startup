@@ -1,0 +1,43 @@
+*Boot process
+
+power on 
+bios                             
+mbr                              
+boot loader (grub lilo)          
+kernel
+initial ram disk (initramfs)
+/sbin/init
+command shell using getty
+xwindows system (GUI)
+
+-----------------------------------
+*bios : -> inicializa hardware incluida la pantalla y teclado y prueba la memoria principal este proceso se llama power on self 
+ test
+
+*boot loader :reside en la parte inicial del disco luego pasa a /boot donde se eleige con kernel iniciar la cual se carga en 
+ ram se descomprime y checkea y naliza el hardware del sistema luego inicializa los drivers del hardware que estan en la kernel
+
+*initramfs : -> contiene los binarios necesarios para montar el root filesystem posee udev el cual es responsable de localizar 
+ los dispositivos presentes localizar los drivers necesarios , el programa mount avisa que el file system esta lsito para usar y lo asocia
+ con su particular jerarquia si todo sale bn el initiramfs es limpiado de la ram y luego se ejecuta /sbin/init el cual se encarga
+ de montar el file system real y si especial drivers son necesitados antes que el dispositivo de almacenamiento masivo pueden ser accedidos estos 
+ deben estar en la imagen de initramfs
+ 
+ *text mode login: solo se ve si no hay instalado algguna gui para el S.O
+ 
+ *the linux kernel : el boot loader carga el kernel y el inivial ram_based  file system (initramfs) en memoriaentonces puede ser 
+ usado directamente por el kernel, cuando el kernel es cargado en ram el inmediatamente inicializa y configura la memoria
+ y el hardware de la maquina lo ual es cpu i/o systems storage el kernele tambn carga algunas aplicaciones necesarias de usuario
+ 
+ +/sbin/init
+inicia el proceso principal todos los procesos nacen de este a excepcion de los llamados por el kernel
+
+------------------------------------------------------------------------
+sumary
+partition -> sesion continua del disco / parte logica de un disco
+filesystem -> metodo para guardar o encontrar archivos en una particion o disco
+*dividiendo los datos en un disco por particiones solo se danara la data de la partcion mala
+*el booteo tieme multiples pasos espezando por la bios que arranca el boot loader que inicia la kernel desde aqui el initramfs
+ file system es invocado lo cual arranca el programa init para completar el arranque
+
+_____________________________
