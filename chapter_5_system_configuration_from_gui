@@ -1,0 +1,15 @@
+hizo un paseo por el menu system , vio resolucion de pantala y otras pelotudeces
+cambio la hora tambn por el menu date de la gui
+
+*NTP (network time protocol)
+el archivo de configuracion es /etc/ntp.conf
+
+*ver resolucion pantalla
+xdpyinfo | grep dim
+
+*se conecta a internet mediante el network manager
+
+*dpkg es el package manager por debajo de apt que es el de alto nivel en la familia debian
+*rpm gestor de paquetes para familia redhat los derivados en alto nivel usan  dnf como remplazo de yum o usa rpm con zypper como
+ interfaz
+*yast synaptic for rpm
