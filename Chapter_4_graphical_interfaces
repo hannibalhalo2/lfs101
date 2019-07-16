@@ -1,0 +1,29 @@
+*x windows system
+  un servicio llamado display manager provee y carga el xserver tambn display manager muestra los logins graficos y inicia el ento
+  rno de escritorio deseado xwindow es un sistema viejo actualmente esta siendo actualizado por wayland 
+  
+                display manager
+                /        |      \
+               /         |       \
+              /          |        \
+             /           |         \
+            /            |          \
+    display managment    |           manage graphical logins
+                      loads x server
+                      
+ *si por algun motivo no arranca automaticamente puede presionar startx
+ 
+ * algunos entornos de escritorio
+  -gnome - defauld display manager is gdm
+  -kde
+  
+  *modificar grub y demas cosas con gnome tweak tool
+  
+  *papaelera linux
+  la papelera se encuentra en /home/user/.local/share/trash
+  
+  *gdm presenta la pantalla de logeo 
+  
+  *deslogearse de un entrono de escritorio mata todos los procesos en el actual X session Y RETORNA A el display manager de logeo 
+  
+  * suspender pone el pc en modo sleep
