@@ -1,0 +1,27 @@
+todo se puede hacer des la linea 
+emulador de terminal (simula que se esta logeado en una terminal de puro texto ya que en verdad se esta en un entrono grafico )
+                      ejemplos de estas son xterm konsole terminator rxvt
+                      
+*comandos sencillos
+                   cat
+                   head
+                   tail
+                   man
+*parte de un comando   coamndo opciones argumentos
+                         cp       -R        puntoa puntob
+*agregar usuario para root
+                      agreguelo en /etc/sudoers
+                      
+*virtual terminals
+solo se puede estar activo en una virtual terminal a la vez ubuntu posee 7 la interfaz grafica corre en la 7 las demas sirven para hacer troubleshoot 
+si hubiera un inconvenioente con la interfaz grafica se sacan con ctrl + alt +f2|f3|f4|f5
+
+*apagar interfaz grafica 
+sudo systemctl stop gdm  | sudo telinit 3
+sudo systemctl start gdm  | sudo telinit 5
+
+*buscar aplicaciones 
+which diff
+whereis diff
+
+quede en explore file system
