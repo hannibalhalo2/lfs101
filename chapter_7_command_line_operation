@@ -24,4 +24,14 @@ sudo systemctl start gdm  | sudo telinit 5
 which diff
 whereis diff
 
-quede en explore file system
+*explore the files system 
+use comando tree -d
+
+*ENLaces simbolicos y duros 
+simbolico ln -s source nombrenlace  (funciona como un acceso directo)
+hardlink  ln source nombrenlaceduro (cambios aplicados en el enlace se ven reflejados en el archivo original )
+
+*ver archivos 
+tac - ver archivo de abajo hacia arriba
+less -ver archivos grande ya que es un paging program con / se puede buscar en el texto 
+
