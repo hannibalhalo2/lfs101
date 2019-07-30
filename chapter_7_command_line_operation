@@ -35,3 +35,48 @@ hardlink  ln source nombrenlaceduro (cambios aplicados en el enlace se ven refle
 tac - ver archivo de abajo hacia arriba
 less -ver archivos grande ya que es un paging program con / se puede buscar en el texto 
 
+*cuando se ejecuta un comando hay 3 estandares de entrada (teclado) stdout (terminal) stderr (log)
+  redirecciones script < input_file
+                script > archivo_salida
+                
+                capturar error
+                script 2> error_file
+                
+                capturar error en el mismo archivo de salida 
+                do_something > all-output-file 2>&1
+                
+                hacer lo mismo de arriba mas facil
+                do_something >& all-output-file
+                
+ *pipe
+ use la salida de un comando para laimentar la entrada de otro
+ ps -aux | grep firefox 
+ 
+ *encontrar archivos
+ locate zip  se alimenta de la salida del comando updatedb
+ find  busca archivo ver man para opciones
+ 
+  -busca y borra todos los archivos .swp
+   find -name "*.swp" -exec rm  {} ';'
+   
+   -buscar basado en tiempo
+   find / -ctime 3
+   
+   -buscar basado en peso
+   find / -size 0
+   
+   -busca y executa archivos de +10mb
+   
+   find / -size +10M -exex command {} ';'
+   
+   
+ *wildcards para busquedas 
+ ? busca cualquier caracter singular que falte   ls ba?.out
+ * busca caulquier numero de caracteres que falten ls ba*
+ [set] busca lo que esta dentro de los conrcehtes ls [adf]
+ [!set] busca cualquier caracter que no esta en los corchetes ls [!adf]
+ 
+ 
+ 
+ 
+
