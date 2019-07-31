@@ -76,6 +76,11 @@ less -ver archivos grande ya que es un paging program con / se puede buscar en e
  [set] busca lo que esta dentro de los conrcehtes ls [adf]
  [!set] busca cualquier caracter que no esta en los corchetes ls [!adf]
  
+ *package manager 2 levels
+   debian family system                            suse family red hat 
+ high level package manager apt-get                  zypper      yum
+ low level package manager  dpkg                         rpm
+ 
  
  
  
