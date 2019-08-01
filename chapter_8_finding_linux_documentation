@@ -1,0 +1,17 @@
+*la documentacion puede encontrarse en 
+  manpages
+  gnu info
+  --help
+  
+ *comando info 
+ tiene una variedad de manuales 
+ 
+ *comando man --help
+ despliega las opciones de man 
+ 
+ *coamndo --help da una ayuda rapida sobre un comando y su sintaxis 
+ 
+ *documentacion de los paquetes se puede encontrar en /usr/share/doc
+ 
+ 
+  
