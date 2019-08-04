@@ -61,8 +61,49 @@ para interpretar la salida de uptime o top + w   ejemplos
  PR  priority
  NI niceness
  VIRT memoria virtual del proceso
- RES  memoria 
- SHR
+ RES  cuanta memoria real esta consumiendo el proceso 
+ SHR  cuanta memoria virtual actualmente es compartibel (memoria o librerias)
+ 
+ *teclas de top 
+ t muestra o esconde un resumen de informacion
+ m muestra o esconde informacion de memoria 
+ A ordena la lista de procesos por los que mas gastan recursos
+ r cambia prioridad de los procesos
+ k matau n proceso
+ f entra a la configuracion de top 
+ o interactivamente selecciona un nuevo orden la lista de procesos
+ 
+ *programar tareas para el futuro sin utilizar cron
+ prompt$  at now + 2 days  (en este momento dentro de 2 dias)
+ at>      cat file1.txt
+ at>      press CTRL+D 
+ 
+ *sleep
+ algunas veces un job se debe atrasar o suspender hasta que otra aplicacion termine otra tarea , sleep supsende la ejecucion por un period de tiempo 
+ el cual puede ser un numero de segundos despues de ese tiempo la ejecucion continua
+ sleep NUMBER[SUFFIX]
+ s segundos
+ m minutos
+ h horas
+ d dias
+ 
+ *summary
+ 
+          -  Processes are used to perform various tasks on the system.
+          -  Processes can be single-threaded or multi-threaded.
+          -  Processes can be of different types, such as interactive and non-interactive.
+          -  Every process has a unique identifier (PID) to enable the operating system to keep track of it.
+          -  The nice value, or niceness, can be used to set priority.
+          -  ps provides information about the currently running processes.
+          - You can use top to get constant real-time updates about overall system performance, as well as information about the processes running on the system.
+          -  Load average indicates the amount of utilization the system is under at particular times.
+          -  Linux supports background and foreground processing for a job.
+          -  at executes any non-interactive command at a specified time.
+          -  cron is used to schedule tasks that need to be performed at regular intervals.
 
+
+
+ 
+ 
           
           
