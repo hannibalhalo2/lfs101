@@ -1,0 +1,68 @@
+*proceso : instancia simple de una o mas tareas leacionads (treads - hilos) no confundir con aplicacion o camando los cuales pueden iniciar 
+          uno o mas procesos los procesos usan uno o mas recursos tal como cpu y memoria , la kernel es la responsable de administrar los recursos decada procesos para que se optimize 
+          la utilizacion del sistema 
+*tipos proceso:
+
+-proceso interactivo : iniciado  por usuario mediante cli o atravez de una interfaz grafica (bash,firefox,top)
+
+-daemons : proceso de server que corre continuamente (servicios)
+
+-thread : procesos livianos que que son tareas bajo un proceso principal del cual compraten recursos pueden matarse sin que esto mate el proceso principal
+         (FIREFOX,gnome-terminal-server)
+
+-kernel threads: tareas del kernel que el usuario no puede empezar ni terminar y tieen un pequenio control sobre ellos (kthreadd , migration ,ksoftirqd) 
+
+*process shedulig and states
+-una funcion critica del kernel es la llamada scheduler es la que continuamente turna los processo on and off en la cpu compartiendo tiempo de acuerdo a la prioridad relativa
+
+*estados proce
+-running el proceso se esta ejecutando
+-sleep esta esperando alguna accion para seguirse ejecutando 
+-zombie un proceso hijo termina pero su proceso padre tambn y no pregunta por su estado pasa a estado zombie no esta vivo pero aparece en el ps -aux
+
+*process ant thread id 
+pid nuemro unicpor porceso para trackear sus atributos
+ppid numero del proceso padre
+thread ID (tid) es como el pid para procesos de un solo hilo pero para multi hilo cada hilo comparte el pid pero tiene un unico tid
+
+*matar procesos
+kill -9 pid
+
+*usuarios y grupos IDS
+RUID (real user id)identifica el usuario que incio el proceso
+EUID (effective uid)determina el acceso de los derechos del usuario
+RGID (real group id) identifica el grupo que nincio el proceso
+EGID (EFFECTIVE GROUP ID)determina los premisos de dicho grupo
+
+*prioridad en procesos 
+la prioridad de un proceso se mide en su valor nice o niceness a mas bajo su valor nice es mas prioritario por lo cual los procesos importantes
+poseee un nicde valor bajo mientras que lo no importantes uno alto ya que pueden esperar en linux solo se usa 20 para los de mas alta prioridad
+y 19 para todos los demas procesos 
+
+*load averages
+es el promediro de carga en un periodo de tiempo se puede visualizar con top y presonar w o en uptime
+para interpretar la salida de uptime o top + w   ejemplos
+
+            0.45: For the last minute the system has been 45% utilized on average.
+            0.17: For the last 5 minutes utilization has been 17%.
+            0.12: For the last 15 minutes utilization has been 12%.
+            
+  *pstree ver procesos en forma de arbol
+  *top listar procesos (la primera linea muestra un breve resumen de lo que sucede en el sistema)
+                       (la segunda son el numero de tareas  y sus estados)
+                       (la tercera linea us(tiempo de cpu dividida entre los usuarios y el kernel) niceness -ni, id muesta el load average wa porcentaje de jobs en espera
+                         interrupciones incluye el porcentaje de hardware, si software interrupciones , st stealtime)
+                       (la cuarta linea ram fisica)
+                       (la quinta linea swap space)
+                       
+ *salida de top 
+ pid
+ user
+ PR  priority
+ NI niceness
+ VIRT memoria virtual del proceso
+ RES  memoria 
+ SHR
+
+          
+          
