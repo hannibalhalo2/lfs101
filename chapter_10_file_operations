@@ -1,1 +1,110 @@
+*file system soportados
+ ext3 ext4 squashfs btrfs
+*soporta implementaciones 
+ntfs vfat xfs jfs hfs hfs+
+
+* sudo mount -t (tipofilesystem se usas cuando da error sin esta opcion en primera instancia) /dev/loquesea /punto montaje
+sudo umount /punto montaje
+-mostrar fiesuystem montados
+ df -Th
+ 
+ *NFS sistemas distribuidos e interconectados atravez de la red  maquina1 tiene la data y maquina2 el file system
+ 
+ para iniciar nfs en otros equipos ademas del server
+ sudo systemctl start nfs
+ 
+ el archivo /etc/exports contiene los direcotrios  y permisoss de lo que se comparte
+ despues de realizar cambios en el archvi se eejecuta exportfs -av para que actulice los cambios 
+ reinciia el servico sudo systemctl restart nfs para que el servicio inicia desque se bootea systemctl enable nfs
+ 
+ -nfs en el cliente
+ monte automaticamente desde el booteo edite el /etc/fstab y agregue 
+ servername:/projects /mnt/nfs/projects nfs defaults 0 0
+ 
+ para montarlo sin tener que rebootear
+ sudo mount servername:/projects /mnt/nfs/projects
+ 
+ 
+ *comparando archivos con diff 
+ -c  muestra la lista de difenrecias 
+ -r  muestra diferencias de forma recursiva
+ -i  ignora si es mayuscula o minuscula
+ -w  ignora diferencias en espacios y tabs
+ -q  solo dice si son diferentes los archivos sin mostrals
+ 
+ *diff3 comparar 3 archivos
+        diff3 file1 file2 file3
+        
+* creando parche con diff y patch
+ diff -Nur originalfile newfile > patchfile
+ patch originalfile patchfile
+ 
+ *uso de file
+ detecta que calse de archivl es el que se le paacomo parametro
+ file archivo1
+ 
+ *RSYNC
+ ejemplo
+ rsync -r project-X archive-machine:archives/project-X
+ trate de usar -dry-run para prevenir danios en la data
+ rsync --progress -avrxH  --delete sourcedir destdir
+ 
+ *comprimiendo data
+ gzip
+ bzip2
+ xz
+ zip
+ 
+ *gzip 
+ gzip *              comprime todos los archivos en el directorio actual
+ gzip -r projectx    comprime todos los archivos en el directorio projectx
+ gunzip foo          descomprime el archivo foo
+ 
+ *bzip2
+ bzip2 *             comprime todos los archivos en el directorio actual 
+ bunzip2 *.bz2       descomprime todos los archivos .bz2
+ 
+ *xz   comprime mas pero es mas lento 
+ xz *                
+ xz foo               comprime foo y borra el archivo original
+ xz -dk bar.xz        descomprime bar.xz en bar y no borra bar.xz si la descompresion es exitosa
+ xz -dcf a.txt b.txt  descomprime varios archivos 
+ xz -d *.xz           descomprime todos los .xz
+ 
+ *zip
+ zip backup *         comprime todos los archivos en el directorio actual y lo agrega a backup.zip
+ zip -r backup.zip ~  comprime todo tu home en backup.zip
+ unzip backup.zip     descomprime todos los archivos en backup.zip
+ 
+ *tar
+ tar xvf mydir.tar               extrae mydir.tar
+ tar zcvf mydir.tar.gz mydir     crea el archivo y comprime con gzip
+ tar jcvf mydir.tar.bz2 mydir    crea el archivo y comprime con bz2
+ tar Jcvf mydir.tar.xz mydir     crea el archivo y comprimecon xz
+ tar xvf mydir.tar.gz            extrae el .gz
+ 
+ *dd
+ sirve para hacer copias o crear archivos de zeros :v 
+ es dinamita 
+dd if=/dev/sda of=/dev/sdb       copia del sda al sdb pero formatea todo sdb 
+
+*sumary
+           - The filesystem tree starts at what is often called the root directory (or trunk, or /).
+           - The  Filesystem Hierarchy Standard (FHS) provides Linux developers and system administrators a standard directory structure for the filesystem.
+           - Partitions help to segregate files according to usage, ownership, and type.
+           - Filesystems can be mounted anywhere on the main filesystem tree at a mount point. Automatic filesystem mounting can be set up by editing /etc/fstab.
+           - NFS (Network File System) is a useful method for sharing files and data through the network systems.
+           - Filesystems like /proc are called pseudo filesystems because they exist only in memory.
+           - /root (slash-root) is the home directory for the root user.
+           - /var may be put in its own filesystem so that growth can be contained and not fatally affect the system.
+           - /boot contains the basic files needed to boot the system.
+           - patch is a very useful tool in Linux. Many modifications to source code and configuration files are distributed with patch files, as they contain the deltas or changes to go from an old version of a file to the new version of a file.
+           - File extensions in Linux do not necessarily mean that a file is of a certain type.
+           - cp is used to copy files on the local machine, while rsync can also be used to copy files from one machine to another, as well as synchronize contents.
+           - gzip, bzip2, xz and zip are used to compress files.
+           - tar allows you to create or extract files from an archive file, often called a tarball. You can optionally compress while creating the archive, and decompress while extracting its contents.
+           - dd can be used to make large exact copies, even of entire disk partitions, efficiently.
+
+
+
 
