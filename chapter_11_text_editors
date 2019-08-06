@@ -1,0 +1,8 @@
+*crear archivo sin editor  
+ echo "nada" > file
+ cat << EOF > file 
+ 
+ *nano y gedit 
+ nano pues es nano :v , gedit editor texto que se usa desde la gui 
+ 
+ 
