@@ -1,0 +1,9 @@
+*whoami que usuario esta logeado actualmente 
+
+*user startup files 
+desde el primer login /etc/profile es leido y evaluado despuyes se revisan los siguientes 
+
+            ~/.bash_profile
+            ~/.bash_login
+            ~/.profile 
+
