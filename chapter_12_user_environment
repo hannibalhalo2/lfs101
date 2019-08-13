@@ -7,3 +7,149 @@ desde el primer login /etc/profile es leido y evaluado despuyes se revisan los s
             ~/.bash_login
             ~/.profile 
 
+*crear alias 
+se pueden agregar individualmente al .bashrc
+alias sin argumrnos devuelve la lista de alias
+
+*grupos
+todos los grupos estan en /etc/group
+todosl os usuarios estan en /etc/passwd
+            
+            -anadir un nuevo grupo
+            sudo /usr/sbin/groupadd anewgroup
+            
+            -del group
+            sudo /usr/sbin/groupdel anewgroup
+            
+            -anadir usuario existente a grupo
+            sudo /usr/sbin/usermod -a -G anewgroup rjsquirrel
+            
+            -Removing a user from the group is somewhat trickier. The -G option to usermod must give a complete list of groups. Thus, if you do:
+             sudo /usr/sbin/usermod -G rjsquirrel rjsquirrel
+
+*anadir usuario
+sudo useradd user
+
+*setting environment variables
+Show the value of a specific variable 	echo $SHELL
+Export a new variable value 	export VARIABLE=value (or VARIABLE=value; export VARIABLE)
+Add a variable permanently 	
+
+    Edit ~/.bashrc and add the line export VARIABLE=value
+    Type source ~/.bashrc or just . ~/.bashrc (dot ~/.bashrc); or just start a new shell by typing  bash
+    
+    -$HOME guarda el home del uusrio que esta logeado
+    -$PATH lista ordenada que es escaneada cuando se lanza un comando 
+            $ export PATH=$HOME/bin:$PATH
+            $ echo $PATH
+    -$SHELL guarda la bash del usario logeado
+    
+ *custom prompt
+ Prompt Statement (PS) is used to customize your prompt string in your terminal windows to display the information you want. 
+
+ PS1 is the primary prompt variable which controls what your command line prompt looks like. The following special characters can be included in PS1:
+
+ \u - User name
+ \h - Host name
+ \w - Current working directory
+ \! - History number of this command
+ \d - Date
+
+ They must be surrounded in single quotes when they are used, as in the following example:
+
+ $ echo $PS1
+ $
+ $ export PS1='\u@\h:\w$ '
+ student@example.com:~$ # new prompt
+ student@example.com:~$
+
+ To revert the changes:
+
+ student@example.com:~$ export PS1='$ '
+ $
+
+ An even better practice would be to save the old prompt first and then restore, as in:
+
+ $ OLD_PS1=$PS1
+
+ change the prompt, and eventually change it back with:
+
+ $ PS1=$OLD_PS1
+ $
+
+*history muestra los comandos tecleados estos comandos se guardan en /.bash_history
+            -variables for history
+            
+            HISTFILE
+            The location of the history file. 
+            HISTFILESIZE
+            The maximum number of lines in the history file (default 500). 
+            HISTSIZE 
+            The maximum number of commands in the history file. 
+            HISTCONTROL
+            How commands are stored. 
+            HISTIGNORE
+            Which command lines can be unsaved.
+            
+ *finding and using previosu commands
+ 
+ Up/Down arrow keys 	     |      Browse through the list of commands previously executed
+!! (Pronounced as bang-bang) |	Execute the previous command
+CTRL-R 	                 |       Search previously used commands
+
+*ejecutando comandos previos
+
+! 	Start a history substitution
+!$ 	Refer to the last argument in a line
+!n 	Refer to the nth command line
+!string 	Refer to the most recent command starting with string
+
+*keyboard shortcuts
+
+CTRL-L 	Clears the screen
+CTRL-D 	Exits the current shell
+CTRL-Z 	Puts the current process into suspended background
+CTRL-C 	Kills the current process
+CTRL-H 	Works the same as backspace
+CTRL-A 	Goes to the beginning of the line
+CTRL-W 	Deletes the word before the cursor
+CTRL-U 	Deletes from beginning of line to cursor position
+CTRL-E 	Goes to the end of the line
+Tab 	Auto-completes files, directories, and binaries
+
+
+*file ownership
+chown cambia el owner archivo
+chgrp cambia el grupo ownership     (chgrp grupo archivo)
+chmod cambia permisos de archivo
+
+*permisos cheatsheet
+
+            4 if read permission is desired
+            2 if write permission is desired
+            1 if execute permission is desired.
+            
+ *sumary
+ 
+            -Linux is a multi-user system.
+            -To find the currently logged on users, you can use the who command.
+            -To find the current user ID, you can use the whoami command.
+            -The root account has full access to the system. It is never sensible to grant full root access to a user.
+            -You can assign root privileges to regular user accounts on a temporary basis using the sudo command.
+            -The shell program (bash) uses multiple startup files to create the user environment. Each file affects the interactive environment in a different way. /etc/profile provides the global settings.
+            -Advantages of startup files include that they customize the user's prompt, set the user's terminal type, set the command-line shortcuts and aliases, and set the default text editor, etc.
+            -An environment variable is a character string that contains data used by one or more applications. The built-in shell variables can be customized to suit your requirements.
+            -The history command recalls a list of previous commands, which can be edited and recycled.
+            -In Linux, various keyboard shortcuts can be used at the command prompt instead of long actual commands.
+            -You can customize commands by creating aliases. Adding an alias to ˜/.bashrc will make it available for other shells.
+            -File permissions can be changed by typing chmod permissions filename.
+            -File ownership is changed by typing chown owner filename.
+            -File group ownership is changed by typing chgrp group filename.
+
+
+
+ 
+
+
+            
+
