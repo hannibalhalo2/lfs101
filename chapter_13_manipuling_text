@@ -1,0 +1,90 @@
+*cat visualiza archivos ademas de otroas caracterisiticas
+
+cat file1 file2 	          Concatenate multiple files and display the output; i.e. the entire content of the first file is followed by that of the second file
+cat file1 file2 > newfile 	Combine multiple files and save the output into a new file
+cat file >> existingfile 	  Append a file to the end of an existing file
+cat > file 	                Any subsequent lines typed will go into the file, until CTRL-D is typed
+cat >> file 	              Any subsequent lines are appended to the file, until CTRL-D is typed
+
+*tac  visualiza un archivo en reversa 
+$ tac file
+$ tac file1 file2 > newfile
+
+*echo muestra el contenido de una variable o puede ser usado para redireccion de texto desde teclado 
+\n new line 
+\t represents horizontal tab 
+
+echo string > newfile 	      The specified string is placed in a new file
+echo string >> existingfile 	The specified string is appended to the end of an already existing file
+echo $variable 	              The contents of the specified environment variable are displayed
+
+*less se usa para abrir archivos muy grandes (como el log del puto tomcat de prod :v :v )
+$ less somefile
+$ cat somefile | less
+
+*head read the first few lines of a file
+head –n 5 grub.cfg
+
+*tail lee las ultimas lineas de un archivo
+tail -n 15 somefile.log
+ tail -f somefile.log 
+ 
+ *herramientas para visualizar archivos comprimidos 
+zcat compressed-file.txt.gz 	      To view a compressed file
+$ zless somefile.gz                 To page through a compressed file
+or
+$ zmore somefile.gz 	  
+$ zgrep -i less somefile.gz 	      To search inside a compressed file
+$ zdiff file1.txt.gz file2.txt.gz 	To compare two compressed files
+
+*sed stream editor 
+
+sed -e command <filename>       Specify editing commands at the command line, operate on file and put the output on standard out (e.g., the terminal)
+sed -f scriptfile <filename> 	  Specify a scriptfile containing sed commands, operate on file and put output on standard out
+
+sed s/pattern/replace_string/ file    	  Substitute first string occurrence in every line
+sed s/pattern/replace_string/g file 	    Substitute all string occurrences in every line
+sed 1,3s/pattern/replace_string/g file 	  Substitute all string occurrences in a range of lines
+sed -i s/pattern/replace_string/g file 	  Save changes for string substitution in the same file
+
+la opcion -i es muy peligros ya que hace los cambios y sobrescribe se recomienda hacer los cambio y luego uno mismo hacer el reemplazo de archivo
+busca y remplaza en archivo uno y guarda en archivo 2
+$ sed s/pattern/replace_string/g file1 > file2
+
+Example: To convert 01/02/… to JAN/FEB/…
+
+sed -e 's/01/JAN/' -e 's/02/FEB/' -e 's/03/MAR/' -e 's/04/APR/' -e 's/05/MAY/' \
+    -e 's/06/JUN/' -e 's/07/JUL/' -e 's/08/AUG/' -e 's/09/SEP/' -e 's/10/OCT/' \
+    -e 's/11/NOV/' -e 's/12/DEC/'
+    
+*awk se usa para extraer y mostrar datos especificos de un archivo 
+
+  -caracterisiticas
+  -utilidad poderosa y interpretada en lenguajes de programacion
+  -es usado para manipular archivos de datos 
+  -trabaja bn con campos ya se un simple pedazo de datos o una columna
+  
+  awk ‘command’  file 	       Specify a command directly at the command line
+  awk -f scriptfile file 	     Specify a file that contains the script to be executed
+  
+awk '{ print $0 }' /etc/passwd  	      Print entire file
+awk -F: '{ print $1 }' /etc/passwd 	    Print first field (column) of every line, separated by a space
+awk -F: '{ print $1 $7 }' /etc/passwd 	Print first and seventh field of every line
+
+*sort organiza lineas de texto de forma ascendenteo descendente
+sort <filename> 	            Sort the lines in the specified file, according to the characters at the beginning of each line
+cat file1 file2 | sort 	      Combine the two files, then sort the lines and display the output on the terminal
+sort -r <filename> 	          Sort the lines in reverse order
+sort -k 3 <filename> 	        Sort the lines by the 3rd field on each line instead of the beginning
+
+*uniq remueve duplicados
+To remove duplicate entries from multiple files at once, use the following command:
+sort file1 file2 | uniq > file3
+OR
+sort -u file1 file2 > file3
+To count the number of duplicate entries, use the following command:
+uniq -c filename
+
+  
+
+
