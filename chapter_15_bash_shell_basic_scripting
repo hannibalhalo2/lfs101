@@ -129,24 +129,102 @@ $ cat > hello.sh
           }
           
  *if statement
- if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi
- A more general definition is:
+    if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi
+   A more general definition is:
 
- if condition
- then
-       statements
- else
-       statements
- fi
+    if condition
+    then
+           statements
+    else
+           statements
+    fi
  
- if [ -f "$1" ]
-then
-    echo file "$1 exists" 
-else
-    echo file "$1" does not exist
-fi
+    if [ -f "$1" ]
+    then
+        echo file "$1 exists" 
+    else
+        echo file "$1" does not exist
+    fi
+
+*ELIF STATEMENT
+    if [ sometest ] ; then
+        echo Passed test1 
+    elif [ somothertest ] ; then
+        echo Passed test2 
+    fi
+
+
+*checkear si un archivo ejecutable 
+    if [ -x /etc/passwd ] ; then
+      ACTION
+    fi
  
- 
+    + demas parametros
+       -e file 	Checks if the file exists.
+       -d file 	Checks if the file is a directory.
+       -f file 	Checks if the file is a regular file (i.e. not a symbolic link, device node, directory, etc.)
+       -s file 	Checks if the file is of non-zero size.
+       -g file 	Checks if the file has sgid set.
+       -u file 	Checks if the file has suid set.
+       -r file 	Checks if the file is readable.
+       -w file 	Checks if the file is writable.
+       -x file 	Checks if the file is executable.
+       
+ * boolean exprecions
+        && 	AND    	The action will be performed only if both the conditions evaluate to true.
+        || 	OR 	    The action will be performed if any one of the conditions evaluate to true.
+         ! 	NOT 	  The action will be performed only if the condition evaluates to false. 
+         
+   * testing strings
+        if [ string1 == string2 ] ; then
+            ACTION
+        fi
+  
+   * test nuericos
+     probar  2 numero o variables se puede hacer con los siguiente parametros en el if 
+     -eq 	Equal to
+     -ne 	Not equal to
+     -gt 	Greater than
+     -lt 	Less than
+     -ge 	Greater than or equal to
+     -le 	Less than or equal to
+     
+     ejemplo
+     age = 5
+     if [[$AGE -ge 20 ]] && [[$AGE -ge 20 ]]; then
+           echo "you are in your 20s"
+     else 
+           echo "vijeo hpta"
+     fi      
+     
+     *expreciones aritmeticas
+     se usa expr aunque algo depredicado 
+     expr 8 + 8
+      echo $(expr 8 + 8)
+      
+      
+      
+      *sumary
+      
+           -Scripts are a sequence of statements and commands stored in a file that can be executed by a shell. The most commonly used 
+             shell in Linux is bash.
+           - Command substitution allows you to substitute the result of a command as a portion of another command.
+           - Functions or routines are a group of commands that are used for execution.
+           - Environmental variables are quantities either preassigned by the shell or defined and modified by the user.
+           - To make environment variables visible to child processes, they need to be exported.
+           - Scripts can behave differently based on the parameters (values) passed to them.
+           - The process of writing the output to a file is called output redirection.
+            - The process of reading input from a file is called input redirection.
+            - The if statement is used to select an action based on a condition.
+            - Arithmetic expressions consist of numbers and arithmetic operators, such as +, -, and *.
+
+
+
+     
+    
+     
+     
+     
 
       
         
