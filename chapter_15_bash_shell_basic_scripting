@@ -1,0 +1,157 @@
+*shells disponibles
+/bin/sh
+/bin/bash
+/bin/tcsh
+/bin/csh
+/bin/ksh
+/bin/zsh
+
+*simple bash
+$ cat > hello.sh
+  #!/bin/bash
+  echo "Hello Linux Foundation Student"
+  
+ *script interactivo
+ Interactive Example Using bash Scripts
+   #!/bin/bash
+   # Interactive reading of a variable
+   echo "ENTER YOUR NAME"
+   read name
+   # Display variable input
+   echo The name given was :$name
+   
+  *checkear is un comando o script fue existoso
+  pwd
+  /home
+  
+  echo$?
+  0
+  
+  si devuelve algo diferente de 0 no salio bn 
+  
+  *basic sintax and special characters
+  
+  #    	  Used to add a comment, except when used as \#, or as #! when starting a script
+  \ 	    Used at the end of a line to indicate continuation on to the next line
+  ; 	    Used to interpret what follows as a new command to be executed next
+  $ 	    Indicates what follows is an environment variable
+  > 	    Redirect output
+  >> 	    Append output
+  < 	    Redirect input
+  
+  *separando comando en varias lineas 
+    $~/> cd $HOME
+    $~/> sudo apt-get install autoconf automake bison build-essential
+         chrpath curl diffstat emacs flex gcc-multilib g++-multilib \ 
+         libsdl1.2-dev libtool lzop make mc patch \
+         screen socat sudo tar texinfo tofrodos u-boot-tools unzip \
+         vim wget xterm zip 
+         
+   *poniendo varios comando en una sola linea 
+    Thus, the three commands in the following example will all execute, even if the ones preceding them fail:
+    $ make ; make install ; make clean
+
+    However, you may want to abort subsequent commands when an earlier one fails. You can do this using the && (and) operator as in:
+    $ make && make install && make clean
+
+    If the first command fails, the second one will never be executed. A final refinement is to use the || (or) operator, as in:
+    $ cat file1 || cat file2 || cat file3
+
+    In this case, you proceed until something succeeds and then you stop executing any further steps.
+   	Used to pipe the result into the next command
+    
+    *redireccion
+    The > character is used to write output to a file. For example, the following command sends the output of free to /tmp/free.out:
+    $ free > /tmp/free.out
+    
+    *redireccion entrada
+    se le pasa como parametro de entrada por redireccion un arguemnto a un comando 
+    
+    $ wc < /etc/passwd
+      49  105 2678 /etc/passwd
+ 
+    $ wc /etc/passwd
+      49  105 2678 /etcpasswd
+
+    $ cat /etc/passwd | wc
+      49  105 2678
+      
+      *comandos embebidos en la shell
+      los cpmandos pueden ser 
+        -aplicaciones compiladas
+        -built in bash commnads
+        -shell scripts de otros lenguajes
+        
+        -Compiled applications are binary executable files, generally residing on the filesystem in well-known directories such as /usr/bin. 
+        Shell scripts always have access to applications such as rm, ls, df, vi, and gzip, which are programs compiled from lower
+        level programming languages such as C.
+        
+        -built in bash
+        cd pwd read source print para verlos todos en el bash escriba help
+        
+      *paremtros de scripts
+        $ ./script.sh /tmp
+        $ ./script.sh 100 200
+        
+        Parameter 	  Meaning
+            $0 	      Script name
+            $1     	  First parameter
+        $2, $3, etc. 	Second, third parameter, etc.
+            $* 	      All parameters
+            $#       	Number of arguments
+            
+        -usando parametros de scripts
+        $0 prints the script name: param.sh       
+        $1 prints the first parameter: one
+        $2 prints the second parameter: two
+        $3 prints the third parameter: three
+        $* prints all parameters: one two three four five
+        The final statement becomes: All done with param.sh
+        
+        -sustitucion en comandos 
+        se puede sustituir parametros en comandos por salidas de otros ocmnados mediante
+        $()  o ''
+        echo $(uname -r) >> version.txt
+        
+        *variables de entorno en bash
+        echo $PATH
+        export VAR=value
+        
+        *funciones
+         function_name () {
+         command...
+         }
+
+         For example, the following function is named display:
+
+          display () {
+          echo "This is a sample function"
+          }
+          
+ *if statement
+ if TEST-COMMANDS; then CONSEQUENT-COMMANDS; fi
+ A more general definition is:
+
+ if condition
+ then
+       statements
+ else
+       statements
+ fi
+ 
+ if [ -f "$1" ]
+then
+    echo file "$1 exists" 
+else
+    echo file "$1" does not exist
+fi
+ 
+ 
+
+      
+        
+        
+        
+        
+    
+    
