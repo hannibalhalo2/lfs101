@@ -1,0 +1,194 @@
+*comparacion de strings 
+[[ string1 > string2 ]] 	Compares the sorting order of string1 and string2.
+[[ string1 == string2 ]] 	Compares the characters in string1 with the characters in string2.
+myLen1=${#string1} 	      Saves the length of string1 in the variable myLen1.
+
+*extraer la parte de uns tring despues de un punto
+NAME=eddi.parte2
+last=${NAME#*.}  => EL #*. HACE LA MAGIA PARA EXTRAER LE STRING parte2 
+last=${NAME#*.} ; echo last name = $last
+
+*uso de case 
+The case statement is used in scenarios where the actual value of a variable can lead to different execution paths.
+case statements are often used to handle command-line options.
+
+case expression in
+   pattern1) execute commands;;
+   pattern2) execute commands;;
+   pattern3) execute commands;;
+   pattern4) execute commands;;
+   * )       execute some default commands or nothing ;;
+esac
+
+--ejemplo case
+Lab Solution: Using the case Statement
+Create a file named testcase.sh, with the content below.
+
+#!/bin/bash
+
+# Accept a number between 1 and 12 as
+# an argument to this script, then return the
+# the name of the month that corresponds to that number.
+
+# Check to see if the user passed a parameter.
+if [ $# -eq 0 ]
+then
+  echo "Error. Give as an argument a number between 1 and 12."
+  exit 1
+fi
+
+# set month equal to argument passed for use in the script
+month=$1
+
+################################################
+# The example of a case statement:
+
+case $month in
+
+  1)  echo "January"   ;;
+  2)  echo "February"  ;;
+  3)  echo "March"     ;;
+  4)  echo "April"     ;;
+  5)  echo "May"       ;;
+  6)  echo "June"      ;;
+  7)  echo "July"      ;;
+  8)  echo "August"    ;;
+  9)  echo "September" ;;
+  10) echo "October"   ;;
+  11) echo "November"  ;;
+  12) echo "December"  ;;
+  *)
+     echo "Error. No month matches: $month"
+     echo "Please pass a number between 1 and 12."
+     exit 2
+     ;;
+esac
+exit 0
+
+*loops 
+for 
+while
+until
+
+-FOR
+ The for loop operates on each element of a list of items. The syntax for the for loop is:
+ sintax
+      for variable-name in list
+      do
+          execute one iteration for each item in the list until the list is finished
+      done
+      
+ -WHILE
+  the while loop repeats a set of statements as long as the control command returns true. The syntax is:
+  sintax
+  while condition is true
+  do
+      Commands for execution
+      ----
+  done
+ 
+ -UNTIL
+  The until loop repeats a set of statements as long as the control command is false. 
+  Thus, it is essentially the opposite of the while loop. The syntax is:
+  
+  until condition is false
+  do
+      Commands for execution
+      ----
+  done
+  
+  *script debug mode 
+      se puede correr un script en bash en modo de debug de la siguiente forma 
+               -x ./script_file
+         
+       o dentro del script probando sentencias especificas ej
+   
+                if ["$1" != ""] ; then set -x ; fi
+      
+        las opciones son las siguiente que se pueden dar afuera o dentro del script
+   
+         set -x #enciende le modo debug
+         set +x # paga el modo debug 
+   
+   * redireccion de errores durante debugeo 
+   
+    en linux hay 3 opciones de data streams  que sucede cada que un comando es ejecutado y son las siguientes
+    
+    stdin 	Standard Input, by default the keyboard/terminal for programs run from the command line 	0
+    stdout 	Standard output, by default the screen for programs run from the command line 	1
+    stderr 	Standard error, where output error messages are shown or saved 	2
+    
+    -redirijamos el log de error de un script a un archivo externo 
+    ./script.sh 2> error.log
+    
+    * creando archivos temporales y directorios
+    
+   en medio de la ejecucion de un scrip puede ser necesario guardad algun dato  para luego ser retomado  por otra parte del script
+   para lo cual se usa mktemp tenga en cuenta que al final de la ejecucion el archivo desaparecera
+   
+   TEMP=$(mktemp /tmp/tempfile.XXXXXXXX) 	      To create a temporary file   las xxx son caracteres random
+   TEMPDIR=$(mktemp -d /tmp/tempdir.XXXXXXXX) 	To create a temporary directory
+   
+     -ejemplo creacion directorio y archiv temporal 
+     TEMP=$(mktemp /tmp/tempfile.XXXXXXXX)
+     echo $VAR > $TEMP
+     
+   * mandando salidas a el agujero negro o /dev/null
+     para evitar que se sobrecargue la terminal con la salida de algunos comandos tales como find  o ls
+     
+     ls -lR /tmp > /dev/null    esta salida mostrara erroes de escritura y coasa asi 
+     
+     $ ls -lR /tmp >& /dev/null   esta no mostrara ninguan clase de eror 
+     
+   * genereando numeros ranmdom
+   
+   se usa la variable $RANDOM
+   for n in 1 2 3 4 5
+   do echo a new ramdonm number is $RANDOM
+   done
+   
+     -como linux genera numeros random 
+       Some servers have hardware random number generators that take as input different types of noise signals, such as thermal noise and photoelectric effect. A transducer converts this noise into an electric signal, which is again converted into a digital number by an A-D converter. 
+       This number is considered random. However, most common computers do not contain such specialized hardware and, instead, rely on events created during booting to create the raw data needed.
+       Regardless of which of these two sources is used, the system maintains a so-called entropy pool of these digital numbers/random bits. Random numbers are created from this entropy pool.
+       The Linux kernel offers the /dev/random and /dev/urandom device nodes, which draw on the entropy pool to provide random numbers which are drawn from the estimated number of bits of noise in the entropy pool.
+       /dev/random is used where very high quality randomness is required, such as one-time pad or key generation, but it is relatively slow to provide values. /dev/urandom is faster and suitable (good enough) for most cryptographic purposes.
+       Furthermore, when the entropy pool is empty, /dev/random is blocked and does not generate any number until additional environmental noise (network traffic, mouse movement, etc.) is gathered, whereas /dev/urandom reuses the internal pool to produce more pseudo-random bits.
+       
+      -ejercicios
+      Takes a word as an argument.
+      Appends a random number to it.
+      Displays the answer
+      
+      #!/bin/bash
+      ##
+      # check to see if the user supplied in the parameter.
+
+      [[ $# -eq 0 ]] && echo "Usage: $0 word" && exit 1
+
+      echo "$1-$RANDOM"
+      exit 0
+      
+      
+      *sumary
+      
+            -You can manipulate strings to perform actions such as comparison, sorting, and finding length.
+            -You can use Boolean expressions  when working with multiple data types, including strings or numbers, as well as files.
+            -The output of a Boolean expression is either true or false.
+            -Operators used in Boolean expressions include the && (AND), ||(OR), and ! (NOT) operators.
+            - We looked at the advantages of using the case statement in scenarios where the value of a variable can lead to different execution paths.
+            -Script debugging methods help troubleshoot and resolve errors.
+            - The standard and error outputs from a script or shell commands can easily be redirected into the same file or separate files to aid in debugging and saving results
+            - Linux allows you to create temporary files and directories, which store data for a short duration, both saving space and increasing security.
+            -Linux provides several different ways of generating random numbers, which are widely used.
+
+
+
+      
+     
+   
+     
+     
+     
+     
+   
