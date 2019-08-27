@@ -1,0 +1,96 @@
+*configurar impresora en linux 
+
+  -standar for printing software es el common unix printing system (CUPS)
+  
+  -CUPS carries out the printing process with the help of its various components:
+
+            Configuration Files
+            Scheduler
+            Job Files
+            Log Files
+            Filter
+            Printer Drivers
+            Backend.
+            
+ *configuration files 
+ cupsd.conf
+ printer.conf
+ 
+ dentro de /etc/cups
+ 
+ cupsd.conf is where most system-wide settings are located; it does not contain any printer-specific details. Most of the settings available in this file relate to network security, i.e. which systems can access CUPS network capabilities, 
+ how printers are advertised on the local network, what management features are offered, and so on.
+ 
+ printers.conf is where you will find the printer-specific settings. For every printer connected to the system, a corresponding section describes the printer’s status and capabilities. This file is generated only after adding a printer to 
+ the system and should not be modified by hand.
+ 
+ se pueden ver el resto de archivos en /etc/cups
+ 
+ *job files 
+ 
+ cups stores print request in /var/spool/cups 
+ los archivos de datos empiezan por d lo de control con c,despues de que imprime el job el archivo desaparece
+
+ *log files
+ 
+ /var/log/cups
+ 
+ *directorio de drivers 
+ /etc/cups/ppd
+ 
+ *servicio CUPS
+ 
+    systemctl status cups
+  
+    sudo systemctl [enable|disable] cups
+
+    sudo systemctl [start|stop|restart] cups
+    
+ *CUPS  interface web 
+ 
+ This web interface allows you to:
+
+            - Add and remove local/remote printers
+              Configure printers:
+
+             – Local/remote printers 
+
+             – Share a printer as a CUPS server 
+
+            Control print jobs:
+             – Monitor jobs 
+
+             – Show completed or pending jobs 
+
+             – Cancel or move jobs. 
+             
+  el servicio corre en puerto 631
+  puede pedir credenciales para algunas cosas y es la de root
+  
+  *printing from CLI
+  
+  lp (system V) o lpr (BSD)
+  lp -d HP-officejet-4500 /home/test1./txt
+ 
+  Command 	                   Usage
+  lp <filename> 	             To print the file to default printer
+  lp -d printer <filename> 	   To print to a specific printer (useful if multiple printers are available)
+  program | lp                 To print the output of a program
+  echo string | lp 	            
+  lp -n number <filename> 	   To print multiple copies
+  lpoptions -d printer 	       To set the default printer
+  lpq -a 	                     To show the queue status
+  lpadmin 	                   To configure printer queues
+  
+  The lpoptions utility can be used to set printer options and defaults
+  
+  *managing print jobs
+   Command 	Usage
+   lpstat -p -d 	                  To get a list of available printers, along with their status
+   lpstat -a 	To                    check the status of all connected printers, including job numbers
+   cancel job-id                    To cancel a print job
+   OR
+   lprm job-id 	                    
+   lpmove job-id newprinter 	      To move a print job to new printer
+   
+  
