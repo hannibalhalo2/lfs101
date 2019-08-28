@@ -1,0 +1,26 @@
+*tipos de cuentas
+ root
+ System
+ Normal
+ Network
+
+*comparacion su y sudo
+su                                                                    	sudo
+When elevating privilege, you need to enter the root password.          When elevating privilege, you need to enter the user’s password and not the root password.
+Giving the root password to a normal user should never, ever be done.
+
+Once a user elevates to the root account using su, the user can do      Offers more features and is considered more secure and more configurable. Exactly what the user 
+anything that the root user can do for as long as the user wants,       is allowed to do can be precisely controlled and limited. By default the user will either always have to keep giving their 
+without being asked again for a password.  	                            password to do further operations with sudo, or can avoid doing so for a configurable time interval.
+
+The command has limited logging features. 	                            The command has detailed logging features.
+
+ --- resumen no vuelva a usar su en la vida 
+ 
+ *log de sudo
+ aqui se pueden ver los intentos fallidos de sudo 
+ /var/log/secure
+ 
+ *el archivo /etc/sudoers
+ cada que se invoca sudo se revisa este archvo para ver si el usario tiene los privilegios de usar sudo 
+ la mayoria de distribuciones ahora permiten en /etc/sudoers.d tener un archivo con el mismo nombre del usuario 
