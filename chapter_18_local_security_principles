@@ -20,7 +20,24 @@ The command has limited logging features. 	                            The comma
  *log de sudo
  aqui se pueden ver los intentos fallidos de sudo 
  /var/log/secure
+ /var/log/auth.log
+ /var/log/messages
+ 
+ una tipica salida de este log contiene
+ Calling username
+ Terminal info
+ Working directory
+ User account invoked
+ Command with arguments.
+ 
+ log despues de correr sudo whoami
+ 
+ 
+ 
+ 
+ 
  
  *el archivo /etc/sudoers
  cada que se invoca sudo se revisa este archvo para ver si el usario tiene los privilegios de usar sudo 
- la mayoria de distribuciones ahora permiten en /etc/sudoers.d tener un archivo con el mismo nombre del usuario 
+ la mayoria de distribuciones ahora permiten en /etc/sudoers.d tener un archivo con el mismo nombre del usuario para 
+ dejar el archivo maestro sin tocar 
