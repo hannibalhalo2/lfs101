@@ -32,12 +32,65 @@ The command has limited logging features. 	                            The comma
  
  log despues de correr sudo whoami
  
+ Dec 8 14:20:47 server1 sudo: op : TTY=pts/6 PWD=/var/log USER=root COMMAND=/usr/bin/whoami
  
- 
- 
- 
- 
- *el archivo /etc/sudoers
+*el archivo /etc/sudoers
  cada que se invoca sudo se revisa este archvo para ver si el usario tiene los privilegios de usar sudo 
  la mayoria de distribuciones ahora permiten en /etc/sudoers.d tener un archivo con el mismo nombre del usuario para 
  dejar el archivo maestro sin tocar 
+ 
+ *password algorithm
+ Protecting passwords has become a crucial element of security. Most Linux distributions rely on a modern password encryption algorithm called SHA-512 (Secure Hashing Algorithm 512 bits), developed by the U.S. National Security Agency (NSA) to encrypt passwords.
+ The SHA-512 algorithm is widely used for security applications and protocols. These security applications and protocols include TLS, SSL, PHP, SSH, S/MIME and IPSec. SHA-512 is one of the most tested hashing algorithms.
+
+ For example, if you wish to experiment with SHA-512 encoding, the word "test" can be encoded using the program sha512sum to produce the SHA-512 form (see graphic):
+ 
+ *change expiration password 
+ chage --list user
+ chage -E 2025-31-12 user
+ chage --list user
+ 
+ *hardware vulnerability
+ 
+     When hardware is physically accessible, security can be compromised by:
+
+          -  Key logging
+             Recording the real time activity of a computer user including the keys they press. The captured data can either be stored locally or transmitted to remote machines.
+          -  Network sniffing
+             Capturing and viewing the network packet level data on your network.
+          -  Booting with a live or rescue disk
+             Remounting and modifying disk content.
+             
+      The guidelines of security are:
+
+            Lock down workstations and servers.
+            Protect your network links such that it cannot be accessed by people you do not trust.
+            Protect your keyboards where passwords are entered to ensure the keyboards cannot be tampered with.
+            Ensure a password protects the BIOS in such a way that the system cannot be booted with a live or rescue DVD or USB key.
+
+For single user computers and those in a home environment some of the above features (like preventing booting from removable media) 
+can be excessive, and you can avoid implementing them. However, if sensitive information is on your 
+system that requires careful protection, either it shouldn't be there or it should be better protected by following the above guidelines.
+
+
+ *sumary
+            
+         -   The root account has authority over the entire system.
+         -   root privileges may be required for tasks, such as restarting services, manually installing packages and managing parts of the filesystem that are outside your home directory.
+         -   In order to perform any privileged operations such as system-wide changes, you need to use either su or sudo.
+         -   Calls to sudo trigger a lookup in the /etc/sudoers file, or in the /etc/sudoers.d directory, which first validates that the calling user is allowed to use sudo and that it is being used within permitted scope.
+         -   One of the most powerful features of sudo is its ability to log unsuccessful attempts at gaining root access. By default, sudo commands and failures are logged in /var/log/auth.log under the Debian family and /var/log/messages in other distribution families.
+         -  One process cannot access another process’ resources, even when that process is running with the same user privileges.
+         -   Using the user credentials, the system verifies the authenticity and identity.
+         -  The SHA-512 algorithm is typically used to encode passwords. They can be encrypted, but not decrypted.
+         -   Pluggable Authentication Modules (PAM) can be configured to automatically verify that passwords created or modified using the passwd utility are strong enough (what is considered strong enough can also be configured).
+         -   Your IT security policy should start with requirements on how to properly secure physical access to servers and workstations.
+         -   Keeping your systems updated is an important step in avoiding security attacks.
+
+
+ 
+
+ 
+ 
+
+ 
